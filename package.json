@@ -4,7 +4,8 @@
   "description": "Will add later",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon .",
+    "devStart": "nodemon --exec \"cls && npm run lint && node index.js\"",
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
