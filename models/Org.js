@@ -5,13 +5,13 @@ const orgSchema = new Schema({
   id: mongoose.Schema.Types.ObjectId,
   name: String,
   contactInfo: {
-    email : String,
+    email: String,
     sdt: String,
     fbLink: String
   },
-    
+
   category: [String],
-      
+
   description: String,
   logo: String,
   thongtintuyensinh: {

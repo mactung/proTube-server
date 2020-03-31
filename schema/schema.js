@@ -18,27 +18,31 @@ const OrgType = new GraphQLObjectType({
   fields: () => ({
     _id: { type: GraphQLID },
     name: { type: GraphQLString },
-    contactInfo: { type: new GraphQLObjectType({
-      name: 'lmao',
-      fields: () => ({
-        email : { type: GraphQLString },
-        sdt: { type: GraphQLString },
-        fbLink: { type :GraphQLString }
+    contactInfo: {
+      type: new GraphQLObjectType({
+        name: 'lmao',
+        fields: () => ({
+          email: { type: GraphQLString },
+          sdt: { type: GraphQLString },
+          fbLink: { type: GraphQLString }
+        })
       })
-    })},
-    
+    },
+
     category: { type: GraphQLList(GraphQLString) },
-      
+
     description: { type: GraphQLString },
     logo: { type: GraphQLString },
-    thongtintuyensinh: { type: new GraphQLObjectType({
-      name: 'lmao2',
-      fields: () => ({
-        jobDescrition: { type: GraphQLString },
-        deadline: { type: GraphQLString },
-        linkDon: { type: GraphQLString },
+    thongtintuyensinh: {
+      type: new GraphQLObjectType({
+        name: 'lmao2',
+        fields: () => ({
+          jobDescrition: { type: GraphQLString },
+          deadline: { type: GraphQLString },
+          linkDon: { type: GraphQLString },
+        })
       })
-    })},
+    },
   })
 });
 
@@ -80,10 +84,10 @@ const RootQuery = new GraphQLObjectType({
     user: {
       type: UserType,
       args: { id: { type: GraphQLString } },
-      resolve(parent, args){
+      resolve(parent, args) {
         return User.findById(args.id);
       }
-    },    
+    },
   }
 });
 
@@ -96,41 +100,45 @@ const RootMutation = new GraphQLObjectType({
       args: {
         _id: { type: GraphQLID },
         name: { type: GraphQLString },
-        contactInfo: { type: new GraphQLInputObjectType({
-          name: 'lmao3',
-          fields: () => ({
-            email : { type: GraphQLString },
-            sdt: { type: GraphQLString },
-            fbLink: { type :GraphQLString }
+        contactInfo: {
+          type: new GraphQLInputObjectType({
+            name: 'lmao3',
+            fields: () => ({
+              email: { type: GraphQLString },
+              sdt: { type: GraphQLString },
+              fbLink: { type: GraphQLString }
+            })
           })
-        })},
-        
+        },
+
         category: { type: GraphQLList(GraphQLString) },
-          
+
         description: { type: GraphQLString },
         logo: { type: GraphQLString },
-        thongtintuyensinh: { type: new GraphQLInputObjectType({
-          name: 'lmao4',
-          fields: () => ({
-            jobDescrition: { type: GraphQLString },
-            deadline: { type: GraphQLString },
-            linkDon: { type: GraphQLString },
+        thongtintuyensinh: {
+          type: new GraphQLInputObjectType({
+            name: 'lmao4',
+            fields: () => ({
+              jobDescrition: { type: GraphQLString },
+              deadline: { type: GraphQLString },
+              linkDon: { type: GraphQLString },
+            })
           })
-        })}
+        }
 
       },
-      resolve(parent, args){
+      resolve(parent, args) {
         let org = new Org({
           id: args._id,
           name: args.name,
           contactInfo: {
-            email : args.contactInfo.email,
+            email: args.contactInfo.email,
             sdt: args.contactInfo.sdt,
             fbLink: args.contactInfo.fbLink
           },
-          
+
           category: args.category,
-            
+
           description: args.description,
           logo: args.logo,
           thongtintuyensinh: {
@@ -152,7 +160,7 @@ const RootMutation = new GraphQLObjectType({
         ava: { type: GraphQLString },
         bio: { type: GraphQLString },
       },
-      resolve(parent, args){
+      resolve(parent, args) {
         let user = new User({
           id: args._id,
           name: args.name,
