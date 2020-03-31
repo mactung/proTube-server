@@ -32,7 +32,7 @@ let users = [
 let orgs = [
   {
     name: 'Vietcode',
-    description: 'A Information Technology organiztion',
+    description: 'An Information Technology organiztion',
   }
 ];
 
