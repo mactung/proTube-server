@@ -87,7 +87,7 @@ const RootQuery = new GraphQLObjectType({
   }
 });
 
-const Mutation = new GraphQLObjectType({
+const RootMutation = new GraphQLObjectType({
   name: 'MutationType',
   description: 'Mutation',
   fields: {
@@ -124,9 +124,9 @@ const Mutation = new GraphQLObjectType({
           id: args._id,
           name: args.name,
           contactInfo: {
-              email : args.contactInfo.email,
-              sdt: args.contactInfo.sdt,
-              fbLink: args.contactInfo.fbLink
+            email : args.contactInfo.email,
+            sdt: args.contactInfo.sdt,
+            fbLink: args.contactInfo.fbLink
           },
           
           category: args.category,
@@ -134,11 +134,11 @@ const Mutation = new GraphQLObjectType({
           description: args.description,
           logo: args.logo,
           thongtintuyensinh: {
-              jobDescrition: args.thongtintuyensinh.jobDescrition,
-              deadline: Date.parse(args.thongtintuyensinh.deadline),
-              linkDon: args.thongtintuyensinh.linkDon,
-        }
-      });
+            jobDescrition: args.thongtintuyensinh.jobDescrition,
+            deadline: Date.parse(args.thongtintuyensinh.deadline),
+            linkDon: args.thongtintuyensinh.linkDon,
+          }
+        });
         return org.save();
       }
     }
@@ -163,9 +163,10 @@ const Mutation = new GraphQLObjectType({
         return user.save();
       }
     }
-}
+  }
 });
 
 module.exports = new GraphQLSchema({
   query: RootQuery,
+  mutation: RootMutation
 });

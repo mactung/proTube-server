@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "devStart": "nodemon --exec \"cls && npm run lint && node index.js\"",
-    "lint": "eslint .",
+    "lint": "eslint --fix .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
