@@ -16,7 +16,7 @@ const orgSchema = new Schema({
     logo: String,
     thongtintuyensinh: {
         jobDescrition: String,
-        deadline: String,
+        deadline: Date,
         linkDon: String,
     }
 })
