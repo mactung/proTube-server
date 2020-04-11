@@ -1,6 +1,5 @@
 {
   "env": {
-    "commonjs": true,
     "es6": true,
     "node": true
   },
@@ -9,8 +8,12 @@
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
+  "ignorePatterns": [
+    "node_modules/",
+    "public/"
+  ],
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2018,
     "sourceType": "module"
   },
   "rules": {
@@ -29,6 +32,9 @@
     "semi": [
       "warn",
       "always"
+    ],
+    "no-unused-vars": [
+      "warn"
     ]
   }
 }

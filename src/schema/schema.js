@@ -1,15 +1,15 @@
 const graphql = require('graphql');
-// const _ = require('lodash');
 const { User, Org } = require('../models');
 
 const {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
-  // GraphQLInt,
+  GraphQLInt,
   GraphQLInputObjectType,
   GraphQLID,
   GraphQLList,
+  GraphQLNonNull,
 } = graphql;
 
 const OrgType = new GraphQLObjectType({
@@ -20,7 +20,7 @@ const OrgType = new GraphQLObjectType({
     name: { type: GraphQLString },
     contactInfo: {
       type: new GraphQLObjectType({
-        name: 'lmao',
+        name: 'Contact',
         fields: () => ({
           email: { type: GraphQLString },
           sdt: { type: GraphQLString },
@@ -29,20 +29,30 @@ const OrgType = new GraphQLObjectType({
       })
     },
 
-    category: { type: GraphQLList(GraphQLString) },
+    category: { type: new GraphQLList(GraphQLString) },
 
     description: { type: GraphQLString },
     logo: { type: GraphQLString },
-    thongtintuyensinh: {
-      type: new GraphQLObjectType({
-        name: 'lmao2',
-        fields: () => ({
-          jobDescrition: { type: GraphQLString },
-          deadline: { type: GraphQLString },
-          linkDon: { type: GraphQLString },
-        })
-      })
-    },
+    events: { type: new GraphQLList(GraphQLID) } // array of ids in database
+  })
+});
+
+const EventType = new GraphQLObjectType({
+  name: 'PostType',
+  description: 'Orgs\' posts',
+  fields: () => ({
+    _id: { type: GraphQLID },
+    title: { type: GraphQLString },
+    content: { type: GraphQLString },
+    location: { type: GraphQLString },
+    startDate: { type: GraphQLString },
+    dueDate: { type: GraphQLString },
+    org: {
+      type: OrgType,
+      resolve: parent => {
+        return Org.findById(parent.org);
+      }
+    }
   })
 });
 
@@ -52,43 +62,70 @@ const UserType = new GraphQLObjectType({
   fields: () => ({
     _id: { type: GraphQLID },
     name: { type: GraphQLString },
+    email: { type: GraphQLString },
     dob: { type: GraphQLString },
     ava: { type: GraphQLString },
-    bio: { type: GraphQLString }
+    bio: { type: GraphQLString },
+    wishlist: {
+      type: new GraphQLList(OrgType),
+      resolve: parent => {
+        // populate data
+        return parent.wishlist.map(orgId => Org.findById(orgId));
+      }
+    },
   }),
 });
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   description: 'Root query',
-  fields: {
+  args: {
+    limit: { type: GraphQLInt }
+  },
+  fields: () => ({
     orgs: {
       type: new GraphQLList(OrgType),
-      resolve() {
-        return Org.find({});
+      args: {
+        limit: { type: GraphQLInt }
+      },
+      resolve: (_, args) => {
+        return Org.find(
+          {}, 
+          null, 
+          { limit: args.limit ? args.limit : 10 });
       }
     },
     org: {
       type: OrgType,
-      args: { id: { type: GraphQLID } },
-      resolve(parent, args) {
+      args: { 
+        id: { type: new GraphQLNonNull(GraphQLID) } 
+      },
+      resolve(_, args) {
         return Org.findById(args.id);
       }
     },
     users: {
       type: new GraphQLList(UserType),
-      resolve: () => {
-        return User.find({});
+      args: {
+        limit: { type: GraphQLInt }
+      },
+      resolve: (_, args) => {
+        return User.find({
+          limit: args.limit ? args.limit : 10
+        });
       }
     },
     user: {
       type: UserType,
-      args: { id: { type: GraphQLString } },
-      resolve(parent, args) {
+      args: { 
+        id: { type: new GraphQLNonNull(GraphQLID) } 
+      },
+      resolve: (parent, args) => {
         return User.findById(args.id);
       }
     },
-  }
+    
+  })
 });
 
 const RootMutation = new GraphQLObjectType({
@@ -162,7 +199,7 @@ const RootMutation = new GraphQLObjectType({
       },
       resolve(parent, args) {
         let user = new User({
-          id: args._id,
+          _id: args._id,
           name: args.name,
           dob: Date.parse(args.dob),
           ava: args.ava,
