@@ -11,7 +11,7 @@ const orgSchema = new Schema({
       minlength: 6,
       maxlength: 40
     },
-    phone: {
+    phoneNumber: {
       type: String,
       minlength: 8,
       maxlength: 20
@@ -38,7 +38,7 @@ const orgSchema = new Schema({
       required: true,
       minlength: 5,
       maxlength: 100
-    } ,
+    },
     description: {
       type: String,
       maxlength: 200,
