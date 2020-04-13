@@ -2,8 +2,14 @@ const { User, Org, Event } = require('../models');
 
 const admin = require('firebase-admin');
 
+/**
+ * 
+ * @param {Object} userData - payload
+ * @param {String} userData.email
+ * @param {String} userData.password
+ * @param {String} userData.displayName
+ */
 function createUser(userData) {
-  console.log('Creating user');
   admin.auth().createUser({
     email: userData.email,
     password: userData.password,
@@ -25,7 +31,8 @@ function createUser(userData) {
       });
       newUser.save();
 
-      // Cannot use uid as _id
+      // Cannot use Firebase uid as _id so create custom claim to store mongoDB id
+      // Create custom claims for user`
       const customClaims = {
         accountType: 'user',
         _id: newUser._id
@@ -59,8 +66,13 @@ function createEvent(orgId, eventData) {
   org.save();
 }
 
+function authorize(docId, { id }) {
+  return docId == id;
+}
+
 module.exports = {
   createUser,
   createOrg,
   createEvent,
+  authorize
 };

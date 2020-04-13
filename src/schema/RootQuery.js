@@ -1,15 +1,15 @@
-const { User, Org } = require('../models');
-
-const UserType = require('./UserType');
-const OrgType = require('./OrgType');
-
-const { 
-  GraphQLObjectType ,
+const {
+  GraphQLObjectType,
   GraphQLInt,
   GraphQLList,
   GraphQLNonNull,
   GraphQLID
 } = require('graphql');
+const UserType = require('./UserType');
+const OrgType = require('./OrgType');
+const { EventType } = require('./OrgType');
+
+const { User, Org, Event } = require('../models');
 
 const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -25,19 +25,37 @@ const RootQueryType = new GraphQLObjectType({
       },
       resolve: (_, args) => {
         return Org.find(
-          {}, 
-          null, 
+          {},
+          null,
           { limit: args.limit ? args.limit : 10 }
         );
       }
     },
     org: {
       type: OrgType,
-      args: { 
-        id: { type: new GraphQLNonNull(GraphQLID) } 
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) }
       },
       resolve(_, args) {
         return Org.findById(args.id);
+      }
+    },
+    events: {
+      type: new GraphQLList(EventType),
+      args: { limit: { type: GraphQLInt } },
+      resolve: (_, args) => {
+        return Event.find(
+          {},
+          null,
+          { limit: args.limit ? args.limit : 10 }
+        );
+      }
+    },
+    event: {
+      type: EventType,
+      args: { id: { type: new GraphQLNonNull(GraphQLID) } },
+      resolve: (_, args) => {
+        return Event.findById(args.id);
       }
     },
     users: {
@@ -48,18 +66,22 @@ const RootQueryType = new GraphQLObjectType({
       resolve: (_, args) => {
         return User.find(
           {},
-          null,
+          'name contact dob ava bio',
           { limit: args.limit ? args.limit : 10 }
         );
       }
     },
     user: {
       type: UserType,
-      args: { 
-        id: { type: new GraphQLNonNull(GraphQLID) } 
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) }
       },
-      resolve: (parent, args) => {
-        return User.findById(args.id);
+      resolve: (parent, args, context) => {
+        // return User.findById(args.id);
+        context.args = { id: args.id };
+
+        const user = User.findById(args.id);
+        return user;
       }
     },
   })

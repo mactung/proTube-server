@@ -12,7 +12,6 @@ if (process.env.NODE_ENV === 'development') {
   console.log('Server is running in development mode');
   // React App will be built and served in production mode
   app.use(require('cors')());
-
   // run test functions
   require('./test')();
 }
@@ -34,7 +33,7 @@ app.listen(PORT, (err) => {
   if (err) {
     console.log(err);
   } else {
-    console.log(`Server is running on port ${ PORT }`);
-    console.log(`GraphiQL is running at http://localhost:${PORT}/graphql`);
+    console.log(`Server is running at:\thttp://localhost:${PORT}`);
+    console.log(`GraphiQL is running at:\thttp://localhost:${PORT}/graphql`);
   }
 });

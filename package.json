@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "devStart": "nodemon --exec \"cls && npm run lint && node -r dotenv/config src/index.js\"",
-    "lint": "eslint --fix ."
+    "lint": "eslint --fix .",
+    "seed": "cls && node -r dotenv/config src/seedData/seedData.js"
   },
   "keywords": [
     "projectube"

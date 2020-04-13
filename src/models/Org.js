@@ -47,7 +47,7 @@ const orgSchema = new Schema({
     image: {
       type: String,
       maxlength: '200',
-      default: '' // TODO: create 'default' folder on firebase storage and add default images for user avatar, notification, etc.
+      default: null
     },
     url: {
       type: String,
