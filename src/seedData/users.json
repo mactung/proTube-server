@@ -1,187 +1,342 @@
 [
   {
     "name": "DLMD",
+    "contact": {
+      "email": "DLMD@gmail.com",
+      "phone": "202-555-0411",
+      "facebook": "https://www.facebook.com/dundunhh"
+    },
     "dob": "03/04/2001",
     "ava": "null",
     "bio": "tinhdepnhumottrodua"
   },
   {
     "name": "Gena",
+    "contact": {
+      "email": "geno2009@gmail.com",
+      "phone": "0123456789",
+      "facebook": "https://www.facebook.com/tiennuong.kim"
+    },
     "dob": "01/01/1999",
     "ava": "https://i.ytimg.com/vi/3ih9G2GnKRs/maxresdefault.jpg",
     "bio": "so biu ti full ho ni"
   },
   {
     "name": "Gaing",
+    "contact": {
+      "email": "nothinggg@gmail.com",
+      "phone": "202-555-0022",
+      "facebook": "https://www.facebook.com/baochi.nguyen.547"
+    },
     "dob": "06/05/2002",
     "ava": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTb3v5jws0Ad4nDmj5Qi_JFmNmO5CvUphng7zdQ8w07iwapAz2C&usqp=CAU",
     "bio": "lo gaing gaing"
   },
   {
     "name": "No pain no game",
+    "contact": {
+      "email": "okgamer@gmail.com",
+      "phone": "201-897-5559",
+      "facebook": "https://www.facebook.com/pomenguhuhu"
+    },
     "dob": "01/05/2002",
     "ava": "null",
     "bio": "Hoc hanh j tam nay"
   },
   {
     "name": "em la mot chu chim nho",
+    "contact": {
+      "email": "dickki@gmail.com",
+      "phone": "502-894-5589",
+      "facebook": "https://www.facebook.com/kattt04"
+    },
     "dob": "02/02/2003",
     "ava": "https://static.scientificamerican.com/sciam/cache/file/7A715AD8-449D-4B5A-ABA2C5D92D9B5A21_source.png",
     "bio": "chip chip"
   },
   {
     "name": "Rafez Qazi",
-    "dob": "29/04/2010",
+    "contact": {
+      "email": "Raza@gmail.com",
+      "phone": "555-9999-666",
+      "facebook": "https://www.facebook.com/profile.php?id=100006419223673"
+    },
+    "dob": "04/29/2010",
     "ava": "https://pbs.twimg.com/profile_images/806970003941527552/sF8UtACd_400x400.jpg",
     "bio": "I am a programmer"
   },
   {
     "name": "Ricardo",
     "dob": "11/11/1977",
+    "contact": {
+      "email": "emdeplam@gmail.com",
+      "phone": "564-898-7136",
+      "facebook": "https://www.facebook.com/trcank1107"
+    },
     "ava": "data:image/jpeg;base64,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",
     "bio": "hey gril"
   },
   {
     "name": "Bill",
+    "contact": {
+      "email": "Gate@gmail.com",
+      "phone": "895-220-2003",
+      "facebook": "https://www.facebook.com/ngkimngann"
+    },
     "dob": "02/09/1996",
     "ava": "null",
     "bio": "Rich"
   },
   {
     "name": "user20034",
+    "contact": {
+      "email": "Vufat@gmail.com",
+      "phone": "303-113-1199",
+      "facebook": "https://www.facebook.com/profile.php?id=100010492175444"
+    },
     "dob": "07/12/2002",
     "ava": "https://paintingandframe.com/art-imgs/others/david_ricardo_(1772-1823)-24220.jpg",
     "bio": "idk how to use this"
   },
   {
     "name": "afawf",
-    "dob": "19/04/2003",
+    "contact": {
+      "email": "emdeptrai@gmail.com",
+      "phone": "123-555-4789",
+      "facebook": "https://www.facebook.com/nghia.leminh.211"
+    },
+    "dob": "04/19/2003",
     "ava": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTC_znCyWMVAowLq0viVqjnw2KBTRfg7BTWyt1neR4cS-rGnNBn&usqp=CAU",
     "bio": "aegsgasa ea  à"
   },
   {
     "name": "nothin",
-    "dob": "19/09/2003",
+    "contact": {
+      "email": "nothongforsure@gmail.com",
+      "phone": "111-222-3697",
+      "facebook": "https://www.facebook.com/baotruong.nguyen3001"
+    },
+    "dob": "12/09/2003",
     "ava": "https://img.discogs.com/hnryShPfC0zTm4lTS3IOinmdpX4=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/A-141549-1513755088-5412.jpeg.jpg",
     "bio": "Hi"
   },
   {
     "name": "wall_of_fact",
-    "dob": "28/07/1965",
+    "contact": {
+      "email": "wwallll@gmail.com",
+      "phone": "456-896-1596",
+      "facebook": "https://www.facebook.com/quan.nguyenanh.568294"
+    },
+    "dob": "05/07/1965",
     "ava": "data:image/jpeg;base64,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",
     "bio": "Images may be subject to copyright"
   },
   {
     "name": "nobdy",
-    "dob": "13/06/2013",
+    "contact": {
+      "email": "lonely@gmail.com",
+      "phone": "220-223-2225",
+      "facebook": "https://www.facebook.com/Ag.pear"
+    },
+    "dob": "01/06/2013",
     "ava": "null",
     "bio": "cursed"
   },
   {
     "name": "neri_alliday",
-    "dob": "21/06/1988",
+    "contact": {
+      "email": "nerd2009@gmail.com",
+      "phone": "654-559-2996",
+      "facebook": "https://www.facebook.com/ducanh.ngo.370"
+    },
+    "dob": "12/06/1988",
     "ava": "https://thenypost.files.wordpress.com/2018/02/022518-anonymous-feature.jpg?quality=80&strip=all",
     "bio": "loroma"
   },
   {
     "name": "anonymous",
+    "contact": {
+      "email": "idontkhow@gmail.com",
+      "phone": "001-001-0000",
+      "facebook": "https://www.facebook.com/tony.a.nguyen.7796"
+    },
     "dob": "05/05/2000",
     "ava": "https://i.insider.com/56fea1d1dd08957c5f8b4777?width=1100&format=jpeg&auto=webp",
     "bio": "Dare u"
   },
   {
     "name": "Jesus",
+    "contact": {
+      "email": "vailonluon@gmail.com",
+      "phone": "1236548987",
+      "facebook": "https://www.facebook.com/tthlinh.04"
+    },
     "dob": "01/01/0001",
     "ava": "https://jesuschristsavior.net/Savior.jpeg",
     "bio": "beliefs that Jesus was conceived by the Holy Spirit"
   },
   {
     "name": "Notch",
+    "contact": {
+      "email": "dmmc@gmail.com",
+      "phone": "226-598-4789",
+      "facebook": "https://www.facebook.com/profile.php?id=100032843204113"
+    },
     "dob": "01/06/1979",
     "ava": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Notch_receives_the_Pioneer_Award_at_GDC_2016_%28cropped%29.jpg",
     "bio": "A minecraft player"
   },
   {
     "name": "Kipler",
+    "contact": {
+      "email": "deptraivaailon@gmail.com",
+      "phone": "123-456-7890",
+      "facebook": "https://www.facebook.com/profile.php?id=100010083136443"
+    },
     "dob": "07/05/2000",
     "ava": "https://pbs.twimg.com/media/EMjIjd6U8AQwsh9.png",
     "bio": "In linguistics, grammatical mood is a grammatical feature of verbs, used for signaling modality."
   },
   {
-    "name": "Dio",
+    "name": "Diooooooo",
+    "contact": {
+      "email": "jotaro@gmail.com",
+      "phone": "03654981084",
+      "facebook": "https://www.facebook.com/profile.php?id=100011230364557"
+    },
     "dob": "01/01/1987",
     "ava": "https://upload.wikimedia.org/wikipedia/en/d/d2/Dio_Brando.jpg",
     "bio": "ディオ・ブランドー"
   },
   {
     "name": "HoangThuan",
-    "dob": "15/08/2001",
+    "contact": {
+      "email": "hoangthuan20020009@gmail.com",
+      "phone": "58953146463",
+      "facebook": "https://www.facebook.com/bang.lai.3954"
+    },
+    "dob": "12/08/2001",
     "ava": "https://gamepedia.cursecdn.com/lolesports_gamepedia_en/thumb/b/b0/VirusS.jpg/220px-VirusS.jpg?version=d1362a967dbfe36758b2ad92b18935aa",
     "bio": "Đừng nói yêu đến phát điên rồi vẫn cứ hồn nhiên phản bội. Xin đừng đua đòi theo xã hội để rồi sống bằng bộ mặt vô tội giả nai"
   },
   {
     "name": "Donald2209",
-    "dob": "22/09/2002",
+    "contact": {
+      "email": "trump@gmail.com",
+      "phone": "56349616518",
+      "facebook": "https://www.facebook.com/trinhha.phong.35"
+    },
+    "dob": "02/09/2002",
     "ava": "https://pbs.twimg.com/profile_images/722040263447867392/HjJwwzG8.jpg",
     "bio": "Bulli"
   },
   {
     "name": "NguyenTienHoang",
-    "dob": "30/07/2003",
+    "contact": {
+      "email": "gaugau@gmail.com",
+      "phone": "135649781",
+      "facebook": "https://www.facebook.com/profile.php?id=100015693396047"
+    },
+    "dob": "06/07/2003",
     "ava": "https://lh3.googleusercontent.com/proxy/oAIkMN9WI1nPTtmwokhpk3HL-WbzHDaJVB3t5p0YstZhecBZWL82r3sbJWm7FSc4Riu8Io4ziMJyMFZ_F47nCj82m5jnyBycVqgw2TwHPUgyYsggiSaElPUrrRaAl6p0mBMaUdE-rVy3lMlESXMHcZIgZ6YOJW_JspH-JZ5gmWJ9y-zCRTN87NVZjNdexLFXsa0ujGFLXkWSUw_6F9Y56sBU1sFgALo0OnWr3K0JLdBSeThCTq5AdA4",
     "bio": "Englich Student"
   },
   {
     "name": "PeLinhKute",
+    "contact": {
+      "email": "cancer@gmail.com",
+      "phone": "111111111111",
+      "facebook": "https://www.facebook.com/profile.php?id=100015276121871"
+    },
     "dob": "01/03/2007",
     "ava": "https://lh3.googleusercontent.com/proxy/IQZD1FUn3wo4S25VqSsiSa76FCKzBE2g9o3-k1nX-R2Z-nBZ1sAqgQyJbRBdDmaYDiIn0ZqpFowEywVmLK0lnkZ4FQdPNN43U7TpJ6nT-rPgjvc",
     "bio": "ck4`0 c4'k ck y3^u cu?4 e"
   },
   {
     "name": "TruongGian",
-    "dob": "31/02/2000",
+    "contact": {
+      "email": "givay@gmail.com",
+      "phone": "32565987845",
+      "facebook": "https://www.facebook.com/thnhhaaa"
+    },
+    "dob": "01/02/2000",
     "ava": "https://vcdn-giaitri.vnecdn.net/2016/06/21/truonggian-1466453511_1466453521_1200x0.jpg",
     "bio": "Chu len day xem cac chau hoc"
   },
   {
     "name": "XuanXieunzz",
+    "contact": {
+      "email": "ohoho@gmail.com",
+      "phone": "56498615345",
+      "facebook": "https://www.facebook.com/hai.nguyenngoc.129794"
+    },
     "dob": "02/02/1916",
     "ava": "https://www.thivien.net/attachment/vnduJD_TYrIrUDl9fyOqRw.1503720312.jpg",
     "bio": "Em yeu cua Huy Can"
   },
   {
     "name": "SKT.faker",
+    "contact": {
+      "email": "skt.hihio@gmail.com",
+      "phone": "06460874845",
+      "facebook": "https://www.facebook.com/besosedd"
+    },
     "dob": "01/02/1988",
     "ava": "https://gamepedia.cursecdn.com/lolesports_gamepedia_en/thumb/5/59/SK_Telecom_T1logo_square.png/600px-SK_Telecom_T1logo_square.png?version=90d95e4116294b61db9592755c6c03f4",
     "bio": "SKT GANG"
   },
   {
     "name": "SKT.teddy",
+    "contact": {
+      "email": "skt.teddy@gmail.com",
+      "phone": "1384618161",
+      "facebook": "https://www.facebook.com/tudeptraihihi243"
+    },
     "dob": "02/02/1988",
     "ava": "https://gamepedia.cursecdn.com/lolesports_gamepedia_en/thumb/5/59/SK_Telecom_T1logo_square.png/600px-SK_Telecom_T1logo_square.png?version=90d95e4116294b61db9592755c6c03f4",
     "bio": "SKT GANG"
   },
   {
     "name": "SKT.CLID",
+    "contact": {
+      "email": "skt.clid@gmail.com",
+      "phone": "32130568491",
+      "facebook": "https://www.facebook.com/profile.php?id=100026016190413"
+    },
     "dob": "03/02/1988",
     "ava": "https://gamepedia.cursecdn.com/lolesports_gamepedia_en/thumb/5/59/SK_Telecom_T1logo_square.png/600px-SK_Telecom_T1logo_square.png?version=90d95e4116294b61db9592755c6c03f4",
     "bio": "SKT GANG"
   },
   {
     "name": "SKT.KHAN",
+    "contact": {
+      "email": "skt.khan@gmail.com",
+      "phone": "20649606841",
+      "facebook": "https://www.facebook.com/PolegyMaster"
+    },
     "dob": "04/02/1988",
     "ava": "https://gamepedia.cursecdn.com/lolesports_gamepedia_en/thumb/5/59/SK_Telecom_T1logo_square.png/600px-SK_Telecom_T1logo_square.png?version=90d95e4116294b61db9592755c6c03f4",
     "bio": "SKT GANG"
   },
   {
     "name": "SKT.Effort",
+    "contact": {
+      "email": "skt.effrot@gmail.com",
+      "phone": "122411032041",
+      "facebook": "https://www.facebook.com/profile.php?id=100030779841951"
+    },
     "dob": "05/02/1988",
     "ava": "https://gamepedia.cursecdn.com/lolesports_gamepedia_en/thumb/5/59/SK_Telecom_T1logo_square.png/600px-SK_Telecom_T1logo_square.png?version=90d95e4116294b61db9592755c6c03f4",
     "bio": "SKT GANG"
   },
   {
     "name": "HuyCanzzzz",
-    "dob": "31/05/1919",
+    "contact": {
+      "email": "dmxuandieu@gmail.com",
+      "phone": "0977465010",
+      "facebook": "https://www.facebook.com/yuh.naux.neyugn23"
+    },
+    "dob": "11/05/1919",
     "ava": "https://lh3.googleusercontent.com/proxy/dBUJeB9X5cARmFagismXgDitWImkpZfZ34t899862dZhOWezIUwHHtvmwOADfZPkza7gRVUcWuPYDOjQhBufEZQxSLs4nuLaYqmvUcLTEQg9ij2qCLLKdd1p8UBE7IHIUp9TaInyFQFu6oR8FybpV1ctoI_3Il0jEdb2SVACMUr2VfRCtbFiYRgmdqjbNj71VC_fVCG2P8S7pbACFCzYdRGUPw",
     "bio": "t k quen tk xuandieu"
   }
