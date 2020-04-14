@@ -16,6 +16,10 @@ const userSchema = new Schema({
     minlength: 4,
     maxlength: 25,
   },
+  uid: {
+    type: String,
+    required: true
+  },
   contact: {
     email: {
       type: String,
@@ -32,7 +36,10 @@ const userSchema = new Schema({
       type: String,
     }
   },
-  dob: { type: Date },
+  dob: {
+    type: Date,
+    default: null
+  },
   avatar: {
     type: String,
     default: null

@@ -3,17 +3,18 @@ const { User, Org, Event } = require('../models');
 const admin = require('firebase-admin');
 
 /**
- * 
  * @param {Object} userData - payload
  * @param {String} userData.email
  * @param {String} userData.password
  * @param {String} userData.displayName
+ * error should be catch where this function is called
+ * return Promise with a customToken or error
  */
 function createUser(userData) {
-  admin.auth().createUser({
+  return admin.auth().createUser({
     email: userData.email,
     password: userData.password,
-    displayName: userData.displayName || userData.email,
+    displayName: userData.name,
     emailVerified: false,
     disabled: false
   })
@@ -39,18 +40,41 @@ function createUser(userData) {
       };
 
       return admin.auth().createCustomToken(userRecord.uid, customClaims);
-    })
-    .then(customToken => {
-      console.log(customToken);
-    })
-    .catch(err => console.log(err));
-
+    });
 }
 
-function createOrg(orgData) {
-  const newOrg = new Org({ ...orgData });
+function registerOrg(orgData) {
+  admin.auth().createUser({
+    email: orgData.email,
+    password: orgData.password,
+    displayName: orgData.name,
+    emailVerified: false,
+    photoURL: orgData.photoURL,
+    disabled: true
+  })
+    .then(record => {
+      const newOrg = new Org({
+        name: record.displayName,
+        contact: {
+          email: record.email,
+          phoneNumber: record.phoneNumber,
+          facebook: orgData.facebook
+        },
+        dob: orgData.dob,
+        logo: orgData.photoURL,
+        events: [],
+        notifications: [],
+        followers: []
+      });
+      newOrg.save();
 
-  newOrg.save();
+      const customClaims = {
+        accountType: 'org',
+        _id: newOrg._id
+      };
+
+      return admin.auth().createCustomToken(record.uid, customClaims);
+    });
 }
 
 function createEvent(orgId, eventData) {
@@ -61,8 +85,7 @@ function createEvent(orgId, eventData) {
     org: orgId
   });
 
-  org.events = [...org.events, newEvent._id];
-
+  org.events.push(newEvent._id);
   org.save();
 }
 
@@ -72,7 +95,7 @@ function authorize(docId, { id }) {
 
 module.exports = {
   createUser,
-  createOrg,
+  registerOrg,
   createEvent,
   authorize
 };

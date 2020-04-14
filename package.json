@@ -2,9 +2,9 @@
   "name": "projectube",
   "version": "1.0.0",
   "description": "Will add later",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "devStart": "nodemon --exec \"cls && npm run lint && node -r dotenv/config src/index.js\"",
     "lint": "eslint --fix .",
     "seed": "cls && node -r dotenv/config src/seedData/seedData.js"

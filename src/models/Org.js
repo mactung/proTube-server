@@ -14,14 +14,22 @@ const orgSchema = new Schema({
     phoneNumber: {
       type: String,
       minlength: 8,
-      maxlength: 20
+      maxlength: 20,
+      default: ''
     },
     facebook: {
       type: String,
+      default: ''
     }
   },
   categories: [String],
-  description: String,
+  description: {
+    type: String,
+    required: true,
+    default: 'Nothing here yet!',
+    minlength: 2,
+    maxlength: 2000
+  },
   logo: {
     type: String,
     default: null
@@ -29,6 +37,10 @@ const orgSchema = new Schema({
   events: [{
     type: mongoose.ObjectId,
     ref: 'Event'
+  }],
+  followers: [{
+    type: mongoose.ObjectId,
+    ref: 'User'
   }],
 
   // Private
