@@ -1,34 +1,46 @@
 const express = require('express');
 const app = express();
-const graphqlHTTP = require('express-graphql');
-const schema = require('./schema');
-const PORT = process.env.PORT || 8080;
+const { ApolloServer } = require('apollo-server-express');
 
 const path = require('path');
 
 const admin = require('firebase-admin');
 
+const schema = require('./graphql/schema');
+const PORT = process.env.PORT || 8080;
+
+
+admin.initializeApp({
+  credential: admin.credential.cert('config/serviceAccount.json'),
+  databaseURL: 'https://projectube-vc.firebaseio.com'
+});
+
 if (process.env.NODE_ENV === 'development') {
   console.log('Server is running in development mode');
-  // React App will be built and served in production mode
-  app.use(require('cors')());
   // run test functions
   require('./test')();
 }
 
-admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
-  databaseURL: 'https://projectube-vc.firebaseio.com'
-});
-
 // Serve the front-end application
 app.use(express.static(path.dirname(__dirname) + '/public'));
 
-app.use('/graphql', graphqlHTTP({
+const server = new ApolloServer({
   schema,
-  graphiql: true
-}));
+  debug: false,
+  cors: process.env.NODE_ENV === 'development',
+  context: async ({ req }) => {
+    const user = await admin
+      .auth()
+      .verifyIdToken(req.headers.authorization) 
+      .catch(() => null);
 
+    return { 
+      user
+    };
+  }
+});
+
+server.applyMiddleware({ app });
 app.listen(PORT, (err) => {
   if (err) {
     console.log(err);
