@@ -1,26 +1,26 @@
 const { User, Org, Event } = require('../models');
 
-function searchForOrgs(str, filters = {}) {
-  return Org.find(
-    {}, 
+function searchForUsers(str, filters = {}) {
+  return User.find(
+    { name: new RegExp(str, 'ig'), ...filters }, 
     null, 
-    { limit: 10, ...filters }
+    { limit: 10 }
   );
 }
 
-function searchForUsers(str, filters = {}) {
-  return User.find(
-    {}, 
+function searchForOrgs(str, filters = {}) {
+  return Org.find(
+    { name: new RegExp(str, 'ig'), ...filters }, 
     null, 
-    { limit: 10, ...filters }
+    { limit: 10 }
   );
 }
 
 function searchForEvents(str, filters = {}) {
   return Event.find(
-    {}, 
+    { title: new RegExp(str, 'ig'), ...filters }, 
     null, 
-    { limit: 10, ...filters }
+    { limit: 10 }
   );
 }
 

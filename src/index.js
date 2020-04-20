@@ -29,6 +29,10 @@ const server = new ApolloServer({
   debug: false,
   cors: process.env.NODE_ENV === 'development',
   context: async ({ req }) => {
+    if (!req.headers || !req.headers.authorization) {
+      return { user: null };
+    }
+
     const user = await admin
       .auth()
       .verifyIdToken(req.headers.authorization) 
