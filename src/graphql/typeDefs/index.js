@@ -5,6 +5,8 @@ const EventType = require('./EventType');
 const Search = require('./Search');
 const commonTypes = require('./commonTypes');
 
+const RootMutation = require('./RootMutation');
+
 module.exports = [
   RootQuery,
   UserType,
@@ -12,4 +14,5 @@ module.exports = [
   EventType,
   Search,
   commonTypes,
+  RootMutation
 ];

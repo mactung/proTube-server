@@ -1,5 +1,8 @@
 const { User, Org, Event } = require('../models');
 
+/**
+ * Need improvement for these 3 search func
+ */
 function searchForUsers(str, filters = {}) {
   return User.find(
     { name: new RegExp(str, 'ig'), ...filters }, 
@@ -24,6 +27,7 @@ function searchForEvents(str, filters = {}) {
   );
 }
 
+// TODO: rewrite this function
 function createEvent(orgId, eventData) {
   const org = Org.findById(orgId);
 

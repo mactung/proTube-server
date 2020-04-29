@@ -6,47 +6,6 @@ const { User, Org } = require('../models');
  */
 
 /**
- * @param {Object} userData - payload
- * @param {String} userData.email
- * @param {String} userData.password
- * @param {String} userData.displayName
- * error should be catch where this function is called
- * return Promise with a customToken or error
- */
-function createUser(userData) {
-  return admin.auth().createUser({
-    email: userData.email,
-    password: userData.password,
-    displayName: userData.name,
-    emailVerified: false,
-    disabled: false
-  })
-    .then(userRecord => {
-      const newUser = new User({
-        uid: userRecord.uid,
-        name: userData.name,
-        dob: userData.dob,
-        contact: {
-          email: userData.email,
-          phoneNumber: userData.phoneNumber,
-          facebook: userData.facebook
-        },
-        notifications: []
-      });
-      newUser.save();
-
-      // Cannot use Firebase uid as _id so create custom claim to store mongoDB id
-      // Create custom claims for user`
-      const customClaims = {
-        accountType: 'user',
-        _id: newUser._id
-      };
-
-      return admin.auth().createCustomToken(userRecord.uid, customClaims);
-    });
-}
-
-/**
  * This should create a placeholder for organizations until they are
  * accepted by the support team.
  * @param {Object} orgData
@@ -107,7 +66,7 @@ function authorize(headers, _id = null) {
 }
 
 module.exports = {
-  createUser,
+  signUp,
   registerOrg,
   authorize,
 };
