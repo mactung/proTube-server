@@ -1,43 +1,30 @@
 const { User, Org, Event } = require('../models');
 
 /**
- * Need improvement for these 3 search func
+ * Need improvement for these 3 search funcs
  */
 function searchForUsers(str, filters = {}) {
   return User.find(
-    { name: new RegExp(str, 'ig'), ...filters }, 
-    null, 
+    { name: new RegExp(str, 'ig'), ...filters },
+    null,
     { limit: 10 }
   );
 }
 
 function searchForOrgs(str, filters = {}) {
   return Org.find(
-    { name: new RegExp(str, 'ig'), ...filters }, 
-    null, 
+    { name: new RegExp(str, 'ig'), ...filters },
+    null,
     { limit: 10 }
   );
 }
 
 function searchForEvents(str, filters = {}) {
   return Event.find(
-    { title: new RegExp(str, 'ig'), ...filters }, 
-    null, 
+    { title: new RegExp(str, 'ig'), ...filters },
+    null,
     { limit: 10 }
   );
-}
-
-// TODO: rewrite this function
-function createEvent(orgId, eventData) {
-  const org = Org.findById(orgId);
-
-  const newEvent = new Event({
-    ...eventData,
-    org: orgId
-  });
-
-  org.events.push(newEvent._id);
-  org.save();
 }
 
 function pushNotification(accountType, docId, notification) {
@@ -53,9 +40,12 @@ function pushNotification(accountType, docId, notification) {
 }
 
 module.exports = {
-  createEvent,
-  pushNotification,
   searchForUsers,
   searchForOrgs,
   searchForEvents,
+  deleteAllOrgs,
+  createOrg,
+  deleteAllEvents,
+  createEvent,
+  pushNotification,
 };

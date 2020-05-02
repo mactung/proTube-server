@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const { User, Org } = require('../models');
+// const { User, Org } = require('../models');
 
 /**
  * All function should return a Promise
@@ -14,39 +14,39 @@ const { User, Org } = require('../models');
  *  @param {string} name
  *  @param {String} photoURL
  */
-function registerOrg(orgData) {
-  admin.auth().createUser({
-    email: orgData.email,
-    password: orgData.password,
-    displayName: orgData.name,
-    photoURL: orgData.photoURL,
-    emailVerified: false,
-    disabled: true
-  })
-    .then(record => {
-      const newOrg = new Org({
-        name: record.displayName,
-        contact: {
-          email: record.email,
-          phoneNumber: record.phoneNumber,
-          facebook: orgData.facebook
-        },
-        dob: orgData.dob,
-        logo: orgData.photoURL,
-        events: [],
-        notifications: [],
-        followers: []
-      });
-      newOrg.save();
+// function registerOrg(orgData) {
+//   admin.auth().createUser({
+//     email: orgData.email,
+//     password: orgData.password,
+//     displayName: orgData.name,
+//     photoURL: orgData.photoURL,
+//     emailVerified: false,
+//     disabled: true
+//   })
+//     .then(record => {
+//       const newOrg = new Org({
+//         name: record.displayName,
+//         contact: {
+//           email: record.email,
+//           phoneNumber: record.phoneNumber,
+//           facebook: orgData.facebook
+//         },
+//         dob: orgData.dob,
+//         logo: orgData.photoURL,
+//         events: [],
+//         notifications: [],
+//         followers: []
+//       });
+//       newOrg.save();
 
-      const customClaims = {
-        accountType: 'org',
-        _id: newOrg._id
-      };
+//       const customClaims = {
+//         accountType: 'org',
+//         _id: newOrg._id
+//       };
 
-      return admin.auth().createCustomToken(record.uid, customClaims);
-    });
-}
+//       return admin.auth().createCustomToken(record.uid, customClaims);
+//     });
+// }
 
 /**
  * This should return a Promise, if success will pass userData to .then
@@ -66,7 +66,6 @@ function authorize(headers, _id = null) {
 }
 
 module.exports = {
-  signUp,
-  registerOrg,
+  // registerOrg,
   authorize,
 };

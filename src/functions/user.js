@@ -2,7 +2,6 @@ const admin = require('firebase-admin');
 const { User } = require('../models');
 // function editProfile()
 
-
 /**
  *   This function should be called after user
  * has verified his or her email.
@@ -26,7 +25,7 @@ function userSignUp(userData) {
     email: userData.email,
     password: userData.password,
     displayName: userData.name,
-    phoneNumber: userData.phoneNumber || null,
+    phoneNumber: userData.phoneNumber,
     emailVerified: false,
     disabled: false
   })
@@ -35,34 +34,37 @@ function userSignUp(userData) {
         uid: userRecord.uid,
         name: userData.name,
         dob: userData.dob,
+        bio: userData.bio,
         contact: {
           email: userData.email,
           phoneNumber: userData.phoneNumber,
-          facebook: userData.facebook
+          facebook: userData.facebook,
         },
-        notifications: []
-      });
-      newUser.save();
-
-      // Cannot use Firebase uid as objectId so create custom claim to store mongoDB id
-      // Create custom claims for user`
-      const customClaims = {
-        _id: newUser._id,
-        accountType: 'user',
-        createdDocument: false,
-        dob: userData.dob,
+        avatar: userData.avatar,
         gender: userData.gender,
         favoriteCategories: userData.favoriteCategories,
-      };
+        notifications: []
+      });
 
-      return admin.auth()
-        .setCustomUserClaims(userRecord.uid, customClaims)
-        .then(() => {
+      return newUser.save()
+        .then(() => { // Since the code inside need to access userRecord so I write the .then inside of .then
+          // Cannot use Firebase uid as objectId so create custom claim to store mongoDB id
+          // Create custom claims for user`
+          const customClaims = {
+            _id: newUser._id,
+            accountType: 'user',
+            createdDocument: false,
+          };
+
           return admin.auth()
-            .createCustomToken(userRecord.uid);
+            .setCustomUserClaims(userRecord.uid, customClaims)
+            .then(() => {
+              return admin.auth()
+                .createCustomToken(userRecord.uid);
+            });
         });
     })
-    .catch(() => 'Nay');
+    .catch(console.log);
 }
 
 module.exports = {

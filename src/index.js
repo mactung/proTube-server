@@ -9,11 +9,8 @@ const admin = require('firebase-admin');
 const schema = require('./graphql/schema');
 const PORT = process.env.PORT || 8080;
 
-
-admin.initializeApp({
-  credential: admin.credential.cert('config/serviceAccount.json'),
-  databaseURL: 'https://projectube-vc.firebaseio.com'
-});
+// Anything need to be initialized should be placed at ./initApps.js
+require('./initApps')();
 
 if (process.env.NODE_ENV === 'development') {
   console.log('Server is running in development mode');
@@ -27,7 +24,7 @@ app.use(express.static(path.dirname(__dirname) + '/public'));
 const server = new ApolloServer({
   schema,
   debug: false,
-  cors: process.env.NODE_ENV === 'development',
+  cors: process.env.CORS === 'enable',
   context: async ({ req }) => {
     if (!req.headers || !req.headers.authorization) {
       return { user: null };
@@ -35,10 +32,10 @@ const server = new ApolloServer({
 
     const user = await admin
       .auth()
-      .verifyIdToken(req.headers.authorization) 
+      .verifyIdToken(req.headers.authorization)
       .catch(() => null);
 
-    return { 
+    return {
       user
     };
   }
