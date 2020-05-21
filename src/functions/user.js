@@ -53,7 +53,7 @@ function userSignUp(userData) {
           const customClaims = {
             _id: newUser._id,
             accountType: 'user',
-            createdDocument: false,
+            // createdDocument: false,
           };
 
           return admin.auth()

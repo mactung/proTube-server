@@ -30,13 +30,15 @@ const server = new ApolloServer({
       return { user: null };
     }
 
-    const user = await admin
+    const claims = await admin
       .auth()
       .verifyIdToken(req.headers.authorization)
-      .catch(() => null);
+      .catch(console.log);
+
+    console.log(claims);
 
     return {
-      user
+      claims
     };
   }
 });

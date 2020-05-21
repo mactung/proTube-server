@@ -46,10 +46,10 @@ const userSchema = new Schema({
   },
   gender: {
     type: String,
-    validate: {
-      validator: s => s.toUpperCase() in ['F', 'M'],
-      message: props => `${props.value} is not a valid gender`
-    },
+    // validate: {
+    //   validator: s => s.toUpperCase() in ['F', 'M'],
+    //   message: props => `${props.value} is not a valid gender`
+    // },
     default: 'F'
   },
   bio: {

@@ -15,15 +15,15 @@ oAuth2Client.setCredentials({
 const calendar = google.calendar({ version: 'v3', auth: oAuth2Client });
 
 module.exports.deleteAllEvents = function () {
-  // delete all on mongodb
-  Event.find({})
+
+  return Event.find({})
     .then(docs => {
       const eventPromises = docs.map(({ _id }) => {
         // delete all on google calendar
         return new Promise((resolve, reject) => {
           calendar.events.delete({
             calendarId: 'primary',
-            eventId: _id
+            eventId: _id.toString()
           }, (err, res) => {
             if (err) return reject(err);
             return resolve(res);
@@ -39,7 +39,7 @@ module.exports.deleteAllEvents = function () {
           if (err) return reject(err);
           return resolve();
         });
-      })
+      });
     })
     .then(() => {
       // delete all reference in org doc. tips: does not need to erase each individual event in the array, just delete all at once
@@ -51,22 +51,33 @@ module.exports.deleteAllEvents = function () {
           });
 
           return Promise.all(orgPromises);
-        })
+        });
     })
-    .then(() => console.log('Deleted all events'))
-}
+    .then(() => console.log('Deleted all events'));
+};
 
-module.exports.createEvent = function (orgID, eventdata) {
+/**
+ * @param {String} orgID - org's document id on databse
+ * @param {Object} eventData
+ *   @param {String} title
+ *   @param {String} content
+ *   @param {String} location
+ *   @param {Date} startDate
+ *   @param {Date} dueDate
+ * 
+ * @return {Promise}
+ */
+module.exports.createEvent = function (orgID, eventData) {
   const newEvent = new Event({
-    title: eventdata.title,
-    content: eventdata.content,
-    location: eventdata.location,
-    startDate: eventdata.startDate,
-    dueDate: eventdata.dueDate,
+    title: eventData.title,
+    content: eventData.content,
+    location: eventData.location,
+    startDate: eventData.startDate,
+    dueDate: eventData.dueDate,
     org: orgID
   });
 
-  return newEvent.save()//add to db
+  return newEvent.save()
     .then(() => { // find org
       return Org.findById(orgID);
     })
@@ -78,14 +89,14 @@ module.exports.createEvent = function (orgID, eventdata) {
     .then(() => { // create event on google calendar
       const event = {
         'id': newEvent._id,
-        'summary': eventdata.title,
-        'location': eventdata.location,
-        'description': eventdata.content,
+        'summary': eventData.title,
+        'location': eventData.location,
+        'description': eventData.content,
         'start': {
-          'dateTime': new Date(eventdata.startDate),
+          'dateTime': new Date(eventData.startDate),
         },
         'end': {
-          'dateTime': new Date(eventdata.dueDate),
+          'dateTime': new Date(eventData.dueDate),
         },
       };
 
@@ -101,4 +112,4 @@ module.exports.createEvent = function (orgID, eventdata) {
         });
       });
     });
-}
+};

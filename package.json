@@ -7,7 +7,8 @@
     "start": "node src/index.js",
     "devStart": "nodemon --exec \"cls && npm run lint && node -r dotenv/config src/index.js\"",
     "lint": "eslint --fix .",
-    "seed": "cls && node -r dotenv/config src/seedData/seedData.js"
+    "seed": "cls && node -r dotenv/config src/seedData/seedData.js",
+    "test": "cls ̃̃&& node -r dotenv/config src/test.js"
   },
   "keywords": [
     "projectube"
@@ -15,16 +16,13 @@
   "author": "Vietcode",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.12.0",
     "apollo-server-express": "^2.12.0",
+    "axios": "^0.19.2",
     "express": "^4.17.1",
-    "express-graphql": "^0.9.0",
     "firebase-admin": "^8.10.0",
     "googleapis": "^49.0.0",
-    "graphql": "^14.6.0",
     "graphql-tools": "^5.0.0",
-    "mongoose": "^5.9.3",
-    "qs-middleware": "^1.0.3"
+    "mongoose": "^5.9.3"
   },
   "devDependencies": {
     "cors": "^2.8.5",

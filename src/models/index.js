@@ -3,11 +3,11 @@ const User = require('./User');
 const Org = require('./Org');
 const Event = require('./Event');
 
-mongoose.connect(`
-  mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@clustertest-xtht7.gcp.mongodb.net/test?retryWrites=true&w=majority`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// mongoose.connect(`
+//   mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@clustertest-xtht7.gcp.mongodb.net/test?retryWrites=true&w=majority`, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 const db = mongoose.connection;
 
@@ -19,5 +19,5 @@ module.exports = {
   User,
   Org,
   Event,
-  connection: db,
+  // connection: db,
 };

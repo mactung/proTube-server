@@ -7,10 +7,10 @@ module.exports.deleteAllOrgs = function () {
       return resolve();
     });
   });
-}
+};
 
 module.exports.createOrg = function (orgData) {
   const newOrg = new Org(orgData);
 
   return newOrg.save();
-}
+};

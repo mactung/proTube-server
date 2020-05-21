@@ -43,9 +43,5 @@ module.exports = {
   searchForUsers,
   searchForOrgs,
   searchForEvents,
-  deleteAllOrgs,
-  createOrg,
-  deleteAllEvents,
-  createEvent,
   pushNotification,
 };

@@ -60,7 +60,7 @@ connection.once('open', () => {
   deleteAllOrgs()
     .then(deleteAllEvents)
     .then(() => {
-      return Promise.all(orgs.map(createOrg))
+      return Promise.all(orgs.map(createOrg));
     })
     .then(orgs => {
       console.log('Finished seed orgs');
@@ -69,7 +69,7 @@ connection.once('open', () => {
       return Promise.all(events.map(event => {
         const orgId = orgs[event.org]._id;
         return createEvent(orgId, event);
-      }))
+      }));
     })
     .then(() => {
       console.log('Finished seed events');

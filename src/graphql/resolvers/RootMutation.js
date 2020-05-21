@@ -5,5 +5,5 @@ module.exports = {
     userSignUp: (_, args) => {
       return userSignUp(args);
     }
-  },
+  }
 };
